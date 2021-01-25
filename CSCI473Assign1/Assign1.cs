@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 
 namespace CSCI473Assign1
 {
@@ -17,8 +18,9 @@ namespace CSCI473Assign1
         static void Main(string[] args)
         {
             string curLine;
-    
-            StreamReader inFile = new StreamReader("C:\\Users\\FORGEJackson\\source\\repos\\CSCI473Assign1\\CSCI473Assign1\\equipment.txt");
+
+            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("CSCI473Assign1.equipment.txt");
+            StreamReader inFile = new StreamReader(stream);
 
             curLine = inFile.ReadLine();
 

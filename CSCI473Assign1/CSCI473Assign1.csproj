@@ -5,4 +5,16 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="equipment.txt" />
+    <None Remove="guilds.txt" />
+    <None Remove="players.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="equipment.txt" />
+    <EmbeddedResource Include="guilds.txt" />
+    <EmbeddedResource Include="players.txt" />
+  </ItemGroup>
+
 </Project>
