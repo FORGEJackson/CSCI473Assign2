@@ -85,7 +85,7 @@ namespace CSCI473Assign1
 
         public override string ToString()
         {
-            string returnString = "(" + Type + ") " + Name + " |" + Ilvl + "| --" + Requirement + "--\n\t\"" + Flavor + "\"\n";
+            string returnString = "(" + Type + ") " + Name + " |" + Ilvl + "| --" + Requirement + "--\n\t\"" + Flavor + "\"";
             return returnString;
         }
     }

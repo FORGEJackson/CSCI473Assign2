@@ -19,7 +19,7 @@ namespace CSCI473Assign1
         static void Main(string[] args)
         {
             string curLine;
-            List<Item> Items = new List<Item>();
+            Dictionary<uint, Item> Items = new Dictionary<uint, Item>();
 
             Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("CSCI473Assign1.equipment.txt");
             StreamReader inFile = new StreamReader(stream);
@@ -36,13 +36,13 @@ namespace CSCI473Assign1
                 UInt32.TryParse(values[5], out uint stamina);
                 UInt32.TryParse(values[6], out uint requirement);
 
-                Items.Add(new Item(id, values[1], (ItemType)type, ilvl, primary, stamina, requirement, values[7]));
+                Items.Add(id, new Item(id, values[1], (ItemType)type, ilvl, primary, stamina, requirement, values[7]));
                 curLine = inFile.ReadLine();
             }
 
-            foreach (Item cur in Items)
+            foreach (KeyValuePair<uint, Item>cur in Items)
             {
-                System.Console.WriteLine(cur);
+                System.Console.WriteLine(cur.Value);
             }
 
         }
