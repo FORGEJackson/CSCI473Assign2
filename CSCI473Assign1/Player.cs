@@ -27,7 +27,7 @@ namespace CSCI473Assign1
          *  12 + 13 Trinket
          */
         List<uint> inventory;
-        bool useLow = false;
+        bool useLow;
 
         //Constructors
         public Player()
@@ -40,6 +40,8 @@ namespace CSCI473Assign1
             this.guildID = 0;
             this.gear = null;
             this.inventory = null;
+
+            this.useLow = true;
         }
 
         public Player(uint id, string name, Race race, uint level, uint exp, uint guildID, uint[] gear)
@@ -52,6 +54,8 @@ namespace CSCI473Assign1
             this.guildID = guildID;
             this.gear = gear;
             this.inventory = new List<uint>();
+
+            this.useLow = true;
         }
 
         //Get and Set Methods
@@ -93,14 +97,17 @@ namespace CSCI473Assign1
                             this.gear[11] = newGearID;
                         else
                         {
-                            UnequipGear(this.gear[10]); //Don't think I need if(useLow == false) because it starts out false
-                            this.gear[10] = newGearID;
-                            useLow == true;
-                            if(useLow == true)
+                            if (useLow)
                             {
-                                UnequipGear(this.gear[11]);
+                                this.UnequipGear(10);
+                                this.gear[10] = newGearID;
+                                useLow = false;
+                            }
+                            else
+                            {
+                                this.UnequipGear(11);
                                 this.gear[11] = newGearID;
-                                useLow == false;
+                                useLow = true;
                             }
                         }
                     }
