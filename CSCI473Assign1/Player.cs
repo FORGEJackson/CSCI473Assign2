@@ -187,7 +187,7 @@ namespace CSCI473Assign1
         }
         public override string ToString()
         {
-            string returnString = Name + " |" + Race + " |" + Level + " |" + GuildID;
+            string returnString = Name + " |" + Race + " |" + Level + " |" + Assign1.Guilds[GuildID];
             return returnString;
         }
     }
