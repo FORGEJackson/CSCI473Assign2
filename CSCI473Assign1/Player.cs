@@ -27,7 +27,8 @@ namespace CSCI473Assign1
          *  12 + 13 Trinket
          */
         List<uint> inventory;
-        bool useLow;
+        bool usedLow1 = false;
+        bool usedLow2 = false;
 
         //Constructors
         public Player()
@@ -40,8 +41,6 @@ namespace CSCI473Assign1
             this.guildID = 0;
             this.gear = null;
             this.inventory = null;
-
-            this.useLow = true;
         }
 
         public Player(uint id, string name, Race race, uint level, uint exp, uint guildID, uint[] gear)
@@ -54,8 +53,6 @@ namespace CSCI473Assign1
             this.guildID = guildID;
             this.gear = gear;
             this.inventory = new List<uint>();
-
-            this.useLow = true;
         }
 
         //Get and Set Methods
@@ -75,7 +72,7 @@ namespace CSCI473Assign1
 
         public uint GuildID { get => guildID; set => guildID = value; }
 
-        //Methods
+        //Equip and Unequip Methods
         public void EquipGear(uint newGearID)
         {
             if (Assign1.Items.ContainsKey(newGearID))   //Check that newGearID is a valid item
@@ -97,17 +94,17 @@ namespace CSCI473Assign1
                             this.gear[11] = newGearID;
                         else
                         {
-                            if (useLow)
+                            if (usedLow1)
                             {
                                 this.UnequipGear(10);
                                 this.gear[10] = newGearID;
-                                useLow = false;
+                                usedLow1 = true;
                             }
                             else
                             {
                                 this.UnequipGear(11);
                                 this.gear[11] = newGearID;
-                                useLow = true;
+                                usedLow1 = false;
                             }
                         }
                     }
@@ -117,7 +114,21 @@ namespace CSCI473Assign1
                             this.gear[12] = newGearID;
                         else if (this.gear[13] == 0)
                             this.gear[13] = newGearID;
-                        //Need another else for both slots full
+                        else
+                        {
+                            if (usedLow2)
+                            {
+                                this.UnequipGear(12);
+                                this.gear[12] = newGearID;
+                                usedLow2 = true;
+                            }
+                            else
+                            {
+                                this.UnequipGear(13);
+                                this.gear[13] = newGearID;
+                                usedLow2 = false;
+                            }
+                        }
                     }
                 }
                 else
@@ -141,7 +152,6 @@ namespace CSCI473Assign1
             else
                 throw new ArgumentException("You don't have any gear equipped here.");
         }
-
         public int CompareTo(object obj)
         {
             if (obj == null) throw new ArgumentNullException(); //Check for null values
@@ -153,6 +163,7 @@ namespace CSCI473Assign1
             else
                 throw new ArgumentException("[Player]:CompareTo argument is not a Player");
         }
+        //Printing methods
         public void PrintGearList()
         {
             ToString();
