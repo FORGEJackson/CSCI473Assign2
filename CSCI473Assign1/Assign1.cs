@@ -103,151 +103,245 @@ namespace CSCI473Assign1
 
         static bool Menu()
         {
-            int input = 0;
-
-            Console.WriteLine("Welcome to the World of ConflictCraft: Testing Environment. Please select an option from the list below:\n\t" +
-                "1.) Print All Players\n\t" +
-                "2.) Print All Guilds\n\t" +
-                "3.) List All Gear\n\t" +
-                "4.) Print Gear List for Player\n\t" +
-                "5.) Leave Guild\n\t" +
-                "6.) Join Guild\n\t" +
-                "7.) Equip Gear\n\t" +
-                "8.) Unequip Gear\n\t" +
-                "9.) Award Experience\n\t" +
-                "10.) Quit\n");
-
-            while ((input < 1 || input > 10) && input != 'T') //Get an integer corresponding with one of the menu options
+            try
             {
-                int.TryParse(Console.ReadLine(), out input);
-                if ((input < 1 || input > 10) && input != 'T')
-                    Console.WriteLine("Please enter the digit corresponding with your choice");
-            }
+                int input = 0;
 
-            string player;
+                Console.WriteLine("Welcome to the World of ConflictCraft: Testing Environment. Please select an option from the list below:\n\t" +
+                    "1.) Print All Players\n\t" +
+                    "2.) Print All Guilds\n\t" +
+                    "3.) List All Gear\n\t" +
+                    "4.) Print Gear List for Player\n\t" +
+                    "5.) Leave Guild\n\t" +
+                    "6.) Join Guild\n\t" +
+                    "7.) Equip Gear\n\t" +
+                    "8.) Unequip Gear\n\t" +
+                    "9.) Award Experience\n\t" +
+                    "10.) Quit\n");
 
-            switch(input)
-            {
-                case 1:
-                    foreach (KeyValuePair<uint, Player> cur in Players)
-                        Console.WriteLine(cur.Value);
+                while (input < 1 || input > 11) //Get an integer corresponding with one of the menu options
+                {
+                    string strInput = Console.ReadLine();
 
-                    Console.WriteLine();
-                    break;
-                case 2:
-                    foreach (KeyValuePair<uint, string> cur in Guilds)
-                        Console.WriteLine(cur.Value);
-
-                    Console.WriteLine();
-                    break;
-                case 3:
-                    foreach (KeyValuePair<uint, Item> cur in Items)
-                        Console.WriteLine(cur.Value);
-
-                    Console.WriteLine();
-                    break;
-                case 4:
-                    Console.Write("Enter the player name: ");
-
-                    player = Console.ReadLine();
-
-                    if (invPlayers.ContainsKey(player))
+                    if (strInput == "q" || strInput == "Q" || strInput == "quit" || strInput == "Quit" || strInput == "exit" || strInput == "Exit")
                     {
-                        Console.WriteLine(Players[invPlayers[player]]);
-                        Players[invPlayers[player]].PrintGearList();
+                        input = 10;
+                    }
+                    else if (strInput == "T")
+                    {
+                        input = 11;
+                    }
+                    else
+                    {
+                        int.TryParse(strInput, out input);
+                        if (input < 1 || input > 10)
+                            Console.WriteLine("Please enter the digit corresponding with your choice");
+                    }
+                }
+
+                string player;
+
+                switch (input)
+                {
+                    case 1: //Print all players
+                        foreach (KeyValuePair<uint, Player> cur in Players)
+                            Console.WriteLine(cur.Value);
+
                         Console.WriteLine();
-                    }
-                    else
-                    {
-                        throw new ArgumentException("Player does not exist");
-                    }
+                        break;
+                    case 2: //Print all guilds
+                        foreach (KeyValuePair<uint, string> cur in Guilds)
+                            Console.WriteLine(cur.Value);
 
-                    break;
-                case 5:
-                    Console.Write("Enter the player name: ");
+                        Console.WriteLine();
+                        break;
+                    case 3: //Print all gear
+                        foreach (KeyValuePair<uint, Item> cur in Items)
+                            Console.WriteLine(cur.Value);
 
-                    player = Console.ReadLine();
+                        Console.WriteLine();
+                        break;
+                    case 4: //Print gear list for a player
+                        Console.Write("Enter the player name: ");
 
-                    if (invPlayers.ContainsKey(player))
-                    {
-                        if(Players[invPlayers[player]].GuildID != 0)
+                        player = Console.ReadLine();
+
+                        if (invPlayers.ContainsKey(player))
                         {
-                            Players[invPlayers[player]].GuildID = 0;
-                            Console.WriteLine(player + " has left their Guild");
+                            Console.WriteLine(Players[invPlayers[player]]);
+                            Players[invPlayers[player]].PrintGearList();
+                            Console.WriteLine();
                         }
                         else
                         {
-                            Console.WriteLine(player + " is not in a Guild");
+                            throw new ArgumentException("Player does not exist");
                         }
-                    }
-                    else
-                    {
-                        throw new ArgumentException("Player does not exist");
-                    }
 
-                    break;
-                case 6:
-                    Console.Write("Enter the player name: ");
+                        break;
+                    case 5: //Leave guild
+                        Console.Write("Enter the player name: ");
 
-                    player = Console.ReadLine();
+                        player = Console.ReadLine();
 
-                    if (invPlayers.ContainsKey(player))
-                    {
-                        Console.Write("Enter the Guild they will join: ");
-
-                        string guild = Console.ReadLine();
-
-                        if (Guilds.ContainsValue(guild))
+                        if (invPlayers.ContainsKey(player))
                         {
-                            Players[invPlayers[player]].GuildID = invGuilds[guild];
-                            Console.WriteLine(player + " has joined " + guild);
+                            if (Players[invPlayers[player]].GuildID != 0)
+                            {
+                                Players[invPlayers[player]].GuildID = 0;
+                                Console.WriteLine(player + " has left their Guild");
+                            }
+                            else
+                            {
+                                Console.WriteLine(player + " is not in a Guild");
+                            }
                         }
                         else
                         {
-                            throw new ArgumentException("Guild does not exist");
+                            throw new ArgumentException("Player does not exist");
                         }
-                    }
-                    else
-                    {
-                        throw new ArgumentException("Player does not exist");
-                    }
 
-                    break;
-                case 7:
-                    Console.Write("Enter the player name: ");
+                        break;
+                    case 6: //Join Guild
+                        Console.Write("Enter the player name: ");
 
-                    player = Console.ReadLine();
+                        player = Console.ReadLine();
 
-                    if (invPlayers.ContainsKey(player))
-                    {
-                        Console.Write("Enter the item name they will equip: ");
-
-                        string item = Console.ReadLine();
-
-                        if (invItems.ContainsKey(item))
+                        if (invPlayers.ContainsKey(player))
                         {
-                            Players[invPlayers[player]].EquipGear(invItems[item]);
-                            Console.WriteLine(player + " successfully equipped " + item);
+                            Console.Write("Enter the Guild they will join: ");
+
+                            string guild = Console.ReadLine();
+
+                            if (Guilds.ContainsValue(guild))
+                            {
+                                Players[invPlayers[player]].GuildID = invGuilds[guild];
+                                Console.WriteLine(player + " has joined " + guild);
+                            }
+                            else
+                            {
+                                throw new ArgumentException("Guild does not exist");
+                            }
                         }
                         else
                         {
-                            throw new ArgumentException("Item does not exist");
+                            throw new ArgumentException("Player does not exist");
                         }
-                    }
-                    else
-                    {
-                        throw new ArgumentException("Player does not exist");
-                    }
 
-                    break;
-                case 8:
-                    break;
-                case 9:
-                    break;
-                case 10:
-                    return false;
+                        break;
+                    case 7: //Equip gear
+                        Console.Write("Enter the player name: ");
+
+                        player = Console.ReadLine();
+
+                        if (invPlayers.ContainsKey(player))
+                        {
+                            Console.Write("Enter the item name they will equip: ");
+
+                            string item = Console.ReadLine();
+
+                            if (invItems.ContainsKey(item))
+                            {
+                                Players[invPlayers[player]].EquipGear(invItems[item]);
+                                Console.WriteLine(player + " successfully equipped " + item);
+                            }
+                            else
+                            {
+                                throw new ArgumentException("Item does not exist");
+                            }
+                        }
+                        else
+                        {
+                            throw new ArgumentException("Player does not exist");
+                        }
+
+                        break;
+                    case 8: //Unequip gear
+                        Console.Write("Enter the player name: ");
+
+                        player = Console.ReadLine();
+
+                        if (invPlayers.ContainsKey(player))
+                        {
+                            Console.Write("Enter the Item Slot number they will unequip:\n" +
+                                "\t0 = Helmet\n" +
+                                "\t1 = Neck\n" +
+                                "\t2 = Shoulders\n" +
+                                "\t3 = Back\n" +
+                                "\t4 = Chest\n" +
+                                "\t5 = Wrist\n" +
+                                "\t6 = Gloves\n" +
+                                "\t7 = Belt\n" +
+                                "\t8 = Pants\n" +
+                                "\t9 = Boots\n" +
+                                "\t10 = Ring\n" +
+                                "\t11 = Trinket\n");
+
+                            input = -1;
+                            while (input < 0 || input > 11) //Get an integer corresponding with one of the menu options
+                            {
+                                int.TryParse(Console.ReadLine(), out input);
+                                if (input < 0 || input > 11)
+                                    Console.WriteLine("Please enter the digit corresponding with your choice");
+                            }
+
+                            Players[invPlayers[player]].UnequipGear(input);
+                        }
+                        else
+                        {
+                            throw new ArgumentException("Player does not exist");
+                        }
+
+                        break;
+                    case 9: //Award experience
+                        Console.Write("Enter the player name: ");
+
+                        player = Console.ReadLine();
+
+                        if (invPlayers.ContainsKey(player))
+                        {
+                            Console.Write("Enter the amount of experience to award: ");
+
+                            UInt32.TryParse(Console.ReadLine(), out uint exp);
+
+                            Players[invPlayers[player]].Exp = exp;
+                        }
+                        else
+                        {
+                            throw new ArgumentException("Player does not exist");
+                        }
+
+                        break;
+                    case 10:    //Quit
+                        return false;
+                    case 11:    //Hidden option for testing IComparable
+                        SortedSet<Item> sortItems = new SortedSet<Item>();
+                        SortedSet<Player> sortPlayers = new SortedSet<Player>();
+
+                        foreach(KeyValuePair<uint, Item> cur in Items)
+                        {
+                            sortItems.Add(cur.Value);
+                        }
+                        foreach (KeyValuePair<uint, Player> cur in Players)
+                        {
+                            sortPlayers.Add(cur.Value);
+                        }
+
+                        foreach (Item cur in sortItems)
+                        {
+                            Console.WriteLine(cur);
+                        }
+                        foreach (Player cur in sortPlayers)
+                        {
+                            Console.WriteLine(cur);
+                        }
+
+                        break;
+                }
             }
-
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
             return true;
         }
     }
