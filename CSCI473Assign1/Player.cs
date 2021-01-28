@@ -65,8 +65,9 @@ namespace CSCI473Assign1
         public uint Exp
         {
             get => exp;
-            set { exp += value; }   //Add more code to increment level
+            set { exp += value; if (exp == this.level * 1000) { this.level++; exp = 0; } }
         }
+
         public uint GuildID { get => guildID; set => guildID = value; }
 
         //Methods
