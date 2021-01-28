@@ -59,11 +59,33 @@ namespace CSCI473Assign1
         //Methods
         public void EquipGear(uint newGearID)
         {
-            
+            if (Item.ContainsKey(newGearID))
+            {
+                if (this.Level >= Item[id].Requirement)
+                    //Do we need to first check array index is empty before the line below this?
+                    gear[Item[Type]] = newGearID; //not sure how to give the right array index
+                else
+                    throw new ArgumentException("Cannot equip-- Player level too low.");
+            }    //still need the Booleans for rings & trinkets
+            else
+                throw new ArgumentException("Not a valid piece of gear");
         }
         public void UnequipGear(int gearSlot)
         {
-
+            int i = 0;
+            if (gear[gearSlot] != null)
+            {
+                if (i < Constants.MAX_INVENTORY_SIZE)
+                {
+                    inventory.Add(Item[id]);
+                    gear[gearSlot] == null;
+                    i++;
+                }
+                else
+                    throw new SomeException("Failed to unequip item. Inventory is full.");
+            }
+            else
+                throw new SomeException("You don't have any gear equipped here.");
         }
     }
 }
