@@ -129,8 +129,10 @@ namespace CSCI473Assign1
             switch(input)
             {
                 case 1:
-                    //Copy case 2 and 3 once Player.ToString is implemented
+                    foreach (KeyValuePair<uint, Player> cur in Players)
+                        Console.WriteLine(cur.Value);
 
+                    Console.WriteLine();
                     break;
                 case 2:
                     foreach (KeyValuePair<uint, string> cur in Guilds)
@@ -151,7 +153,9 @@ namespace CSCI473Assign1
 
                     if (invPlayers.ContainsKey(player))
                     {
+                        Console.WriteLine(Players[invPlayers[player]]);
                         Players[invPlayers[player]].PrintGearList();
+                        Console.WriteLine();
                     }
                     else
                     {
