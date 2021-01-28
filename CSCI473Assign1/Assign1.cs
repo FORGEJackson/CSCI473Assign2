@@ -16,17 +16,18 @@ namespace CSCI473Assign1
 
     class Assign1
     {
-        static Dictionary<uint, Item> Items = new Dictionary<uint, Item>();
-        static Dictionary<uint, Player> Players = new Dictionary<uint, Player>();
-        static Dictionary<uint, string> Guilds = new Dictionary<uint, string>();
+        public static Dictionary<uint, Item> Items = new Dictionary<uint, Item>();
+        public static Dictionary<uint, Player> Players = new Dictionary<uint, Player>();
+        public static Dictionary<uint, string> Guilds = new Dictionary<uint, string>();
 
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the World of ConflictCraft: Testing Environment!\n");
 
             Setup();
+            Menu();
 
-            Item test = Assign1.Items[0];
+            Item test = Assign1.Items[1];
         }
 
         static void Setup()
@@ -71,11 +72,37 @@ namespace CSCI473Assign1
                 "9.) Award Experience\n\t" +
                 "10.) Quit\n");
 
-            while ((input < 1 || input > 10) && input != 'T') 
+            while ((input < 1 || input > 10) && input != 'T') //Get an integer corresponding with one of the menu options
             {
-                input = Console.Read();
+                int.TryParse(Console.ReadLine(), out input);
                 if ((input < 1 || input > 10) && input != 'T')
                     Console.WriteLine("Please enter the digit corresponding with your choice");
+            }
+
+            Console.WriteLine(input);
+
+            switch(input)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 10:
+                    break;
             }
 
             return true;

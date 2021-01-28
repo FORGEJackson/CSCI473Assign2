@@ -13,6 +13,19 @@ namespace CSCI473Assign1
         uint exp;
         uint guildID;
         uint[] gear; //Change from an array to whichever collection is easiest
+        /*  0 Helmet
+         *  1 Neck
+         *  2 Shoulders
+         *  3 Back
+         *  4 Chest
+         *  5 Wrist
+         *  6 Gloves
+         *  7 Belt
+         *  8 Pants
+         *  9 Boots
+         *  10 + 11 Ring
+         *  12 + 13 Trinket
+         */
         List<uint> inventory;
 
         //Constructors
@@ -59,11 +72,27 @@ namespace CSCI473Assign1
         //Methods
         public void EquipGear(uint newGearID)
         {
-            if (Item.ContainsKey(newGearID))
+            if (Assign1.Items.ContainsKey(newGearID))   //Check that newGearID is a valid item
             {
-                if (this.Level >= Item[id].Requirement)
+                if (this.Level >= Assign1.Items[newGearID].Requirement) //Check level requirements
                     //Do we need to first check array index is empty before the line below this?
-                    gear[Item[Type]] = newGearID; //not sure how to give the right array index
+//                   gear[Item[Type]] = newGearID; //not sure how to give the right array index
+
+                    if (Assign1.Items[newGearID].Type <= (ItemType)9)
+                    {
+                        if (this.gear[(int)Assign1.Items[newGearID].Type] != 0) //Check if slot is full and UnequipGear() if it is
+                            UnequipGear((int)Assign1.Items[newGearID].Type);
+
+                        this.gear[(int)Assign1.Items[newGearID].Type] = newGearID;  //Equip newGearID
+                    }
+                    else if (Assign1.Items[newGearID].Type == (ItemType)10) //Equip rules for rings
+                    {
+
+                    }
+                    else if (Assign1.Items[newGearID].Type == (ItemType)11) //Equip rules for trinkets
+                    {
+
+                    }
                 else
                     throw new ArgumentException("Cannot equip-- Player level too low.");
             }    //still need the Booleans for rings & trinkets
@@ -72,20 +101,18 @@ namespace CSCI473Assign1
         }
         public void UnequipGear(int gearSlot)
         {
-            int i = 0;
-            if (gear[gearSlot] != null)
+            if (gear[gearSlot] != 0)
             {
-                if (i < Constants.MAX_INVENTORY_SIZE)
+                if (inventory.Count < Constants.MAX_INVENTORY_SIZE)
                 {
-                    inventory.Add(Item[id]);
-                    gear[gearSlot] == null;
-                    i++;
+                    inventory.Add(gear[gearSlot]);
+                    gear[gearSlot] = 0;
                 }
                 else
-                    throw new SomeException("Failed to unequip item. Inventory is full.");
+                    throw new ArgumentException("Failed to unequip item. Inventory is full.");
             }
             else
-                throw new SomeException("You don't have any gear equipped here.");
+                throw new ArgumentException("You don't have any gear equipped here.");
         }
     }
 }
