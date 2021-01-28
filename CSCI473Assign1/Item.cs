@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*  Authors:    Joshua Jackson z1855047
+ *              Connor Whitten z1819460
+ *      
+ *      CSCI 473 Assignment 1
+ *      Item.cs
+ *      This file contains the implementation of the Item class and its methods
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 

@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*  Authors:    Joshua Jackson z1855047
+ *              Connor Whitten z1819460
+ *      
+ *      CSCI 473 Assignment 1
+ *      Player.cs
+ *      This file contains the implementation of the Player class and its methods
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 

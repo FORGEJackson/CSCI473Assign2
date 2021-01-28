@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*  Authors:    Joshua Jackson z1855047
+ *              Connor Whitten z1819460
+ *      
+ *      CSCI 473 Assignment 1
+ *      Assign1.cs
+ *      This file contains main() as well as the Menu and setup functions
+ */
+
+
+using System;
 using System.IO;
 using System.Reflection;
 using System.Collections.Generic;
