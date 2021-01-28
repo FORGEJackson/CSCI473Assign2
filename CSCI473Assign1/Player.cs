@@ -65,8 +65,9 @@ namespace CSCI473Assign1
         public uint Exp
         {
             get => exp;
-            set { exp += value; }   //Add more code to increment level
+            set { exp += value; if (exp == this.level * 1000) { this.level++; exp = 0; } }
         }
+
         public uint GuildID { get => guildID; set => guildID = value; }
 
         //Methods
@@ -116,7 +117,7 @@ namespace CSCI473Assign1
                     gear[gearSlot] = 0;
                 }
                 else
-                    throw new ArgumentException("Failed to unequip item. Inventory is full.");
+                    throw new ArgumentException("Cannot unequip item. Inventory is full.");
             }
             else
                 throw new ArgumentException("You don't have any gear equipped here.");
@@ -135,13 +136,14 @@ namespace CSCI473Assign1
         }
         public void PrintGearList()
         {
-            System.Console.WriteLine("My name is {0}, I am a Level {1} player, and this is all my equipped gear:", name, level);
-            for(uint i = 0; i < 14; i++)
+            ToString();
+            System.Console.WriteLine("Equipped Gear:");
+            foreach(uint curGear in gear)
             {
-                if (gear[i] == 0)
-                    System.Console.WriteLine("Item type: {0}     Empty slot",Assign1.Items[].Type); //What goes in the brackets??
+                if (curGear != 0)
+                    System.Console.WriteLine(Assign1.Items[curGear]);
                 else
-                    System.Console.WriteLine("Item type: {0}     gear[i]",Assign1.Items[].Type); //Same question here
+                    System.Console.WriteLine("This item slot is empty.");
             }
         }
         public override string ToString()
