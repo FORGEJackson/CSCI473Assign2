@@ -12,7 +12,7 @@ namespace CSCI473Assign1
         uint level;
         uint exp;
         uint guildID;
-        uint[] gear; //Change from an array to whichever collection is easiest
+        uint[] gear;
         /*  0 Helmet
          *  1 Neck
          *  2 Shoulders
@@ -27,7 +27,7 @@ namespace CSCI473Assign1
          *  12 + 13 Trinket
          */
         List<uint> inventory;
-        bool usedLow1 = false;
+        bool usedLow1 = false;  //Booleans for rings & trinkets
         bool usedLow2 = false;
 
         //Constructors
@@ -152,6 +152,7 @@ namespace CSCI473Assign1
             else
                 throw new ArgumentException("You don't have any gear equipped here.");
         }
+        //Method to implement IComparable
         public int CompareTo(object obj)
         {
             if (obj == null) throw new ArgumentNullException(); //Check for null values
