@@ -216,7 +216,20 @@ namespace CSCI473Assign1
 
                     if (invPlayers.ContainsKey(player))
                     {
-                        Console.Write("Enter the item name they will equip");                    }
+                        Console.Write("Enter the item name they will equip: ");
+
+                        string item = Console.ReadLine();
+
+                        if (invItems.ContainsKey(item))
+                        {
+                            Players[invPlayers[player]].EquipGear(invItems[item]);
+                            Console.WriteLine(player + " successfully equipped " + item);
+                        }
+                        else
+                        {
+                            throw new ArgumentException("Item does not exist");
+                        }
+                    }
                     else
                     {
                         throw new ArgumentException("Player does not exist");
