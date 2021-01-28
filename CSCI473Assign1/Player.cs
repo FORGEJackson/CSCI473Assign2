@@ -27,6 +27,7 @@ namespace CSCI473Assign1
          *  12 + 13 Trinket
          */
         List<uint> inventory;
+        bool useLow = false;
 
         //Constructors
         public Player()
@@ -90,7 +91,18 @@ namespace CSCI473Assign1
                             this.gear[10] = newGearID;
                         else if (this.gear[11] == 0)
                             this.gear[11] = newGearID;
-                        //Need another else for both slots full
+                        else
+                        {
+                            UnequipGear(this.gear[10]); //Don't think I need if(useLow == false) because it starts out false
+                            this.gear[10] = newGearID;
+                            useLow == true;
+                            if(useLow == true)
+                            {
+                                UnequipGear(this.gear[11]);
+                                this.gear[11] = newGearID;
+                                useLow == false;
+                            }
+                        }
                     }
                     else if (Assign1.Items[newGearID].Type == (ItemType)11) //Equip rules for trinkets
                     {
