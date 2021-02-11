@@ -33,7 +33,7 @@ namespace CSCI473Assign2
 
         public override string ToString()
         {
-            return this.Name;
+            return String.Format("{0} [{1}]\r\n",this.Name.PadRight(24, ' '), this.Location);
         }
 
     }
