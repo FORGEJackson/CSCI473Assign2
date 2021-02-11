@@ -403,7 +403,9 @@ namespace CSCI473Assign2
             // 
             // lbxGuilds
             // 
+            this.lbxGuilds.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbxGuilds.FormattingEnabled = true;
+            this.lbxGuilds.ItemHeight = 14;
             this.lbxGuilds.Location = new System.Drawing.Point(677, 84);
             this.lbxGuilds.Name = "lbxGuilds";
             this.lbxGuilds.Size = new System.Drawing.Size(306, 368);
