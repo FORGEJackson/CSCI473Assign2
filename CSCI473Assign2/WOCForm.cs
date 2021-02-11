@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -70,7 +71,7 @@ namespace CSCI473Assign2
             foreach (KeyValuePair<uint, Player> cur in Assign2.Players)
             {
                 if (cur.Value.GuildID == curGuild.Id)
-                    cur.Value.GuildID = '000000'; //Error message of "too many characters in character literal, so just make it '0'??
+                    cur.Value.GuildID = 0; //Error message of "too many characters in character literal, so just make it '0'??
             }
             lbxGuilds.Items.Remove(curGuild);
         }
