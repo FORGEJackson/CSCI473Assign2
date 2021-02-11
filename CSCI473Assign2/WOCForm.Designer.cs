@@ -199,6 +199,7 @@ namespace CSCI473Assign2
             // 
             // cbxRole
             // 
+            this.cbxRole.Enabled = false;
             this.cbxRole.FormattingEnabled = true;
             this.cbxRole.Location = new System.Drawing.Point(142, 75);
             this.cbxRole.Name = "cbxRole";
@@ -221,6 +222,7 @@ namespace CSCI473Assign2
             this.cbxClass.Name = "cbxClass";
             this.cbxClass.Size = new System.Drawing.Size(121, 21);
             this.cbxClass.TabIndex = 6;
+            this.cbxClass.SelectedIndexChanged += new System.EventHandler(this.cbxClass_SelectedIndexChanged);
             // 
             // lblClass
             // 

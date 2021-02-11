@@ -22,7 +22,7 @@ namespace CSCI473Assign2
             //Populate Combo boxes
             this.cbxRace.DataSource = Enum.GetValues(typeof(Race));
             this.cbxClass.DataSource = Enum.GetValues(typeof(Class));
-            this.cbxRole.DataSource = Enum.GetValues(typeof(Role));
+            //this.cbxRole.DataSource = Enum.GetValues(typeof(Role));
             this.cbxServer.DataSource = Enum.GetValues(typeof(Servers));
             this.cbxType.DataSource = Enum.GetValues(typeof(GuildType));
 
@@ -87,6 +87,51 @@ namespace CSCI473Assign2
         private void btnAddGuild_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbxClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbxRole.Enabled = true;
+
+            cbxRole.Items.Clear();
+
+            switch(cbxClass.SelectedIndex)
+            {
+                case 0:
+                    this.cbxRole.Items.Add((Role)0);
+                    this.cbxRole.Items.Add((Role)2);
+                    break;
+                case 1:
+                    this.cbxRole.Items.Add((Role)2);
+                    break;
+                case 2:
+                    this.cbxRole.Items.Add((Role)0);
+                    this.cbxRole.Items.Add((Role)1);
+                    this.cbxRole.Items.Add((Role)2);
+                    break;
+                case 3:
+                    this.cbxRole.Items.Add((Role)1);
+                    this.cbxRole.Items.Add((Role)2);
+                    break;
+                case 4:
+                    this.cbxRole.Items.Add((Role)2);
+                    break;
+                case 5:
+                    this.cbxRole.Items.Add((Role)2);
+                    break;
+                case 6:
+                    this.cbxRole.Items.Add((Role)0);
+                    this.cbxRole.Items.Add((Role)1);
+                    this.cbxRole.Items.Add((Role)2);
+                    break;
+                case 7:
+                    this.cbxRole.Items.Add((Role)2);
+                    break;
+                case 8:
+                    this.cbxRole.Items.Add((Role)1);
+                    this.cbxRole.Items.Add((Role)2);
+                    break;
+            }
         }
     }
 }
