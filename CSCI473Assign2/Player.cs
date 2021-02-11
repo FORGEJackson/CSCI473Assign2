@@ -17,6 +17,8 @@ namespace CSCI473Assign2
         readonly uint id;
         readonly string name;
         readonly Race race;
+        Class pclass;
+        Role role;
         uint level;
         uint exp;
         uint guildID;
@@ -44,6 +46,8 @@ namespace CSCI473Assign2
             this.id = 0;
             this.name = "";
             this.race = 0;
+            this.pclass = 0;
+            this.role = 0;
             this.level = 0;
             this.exp = 0;
             this.guildID = 0;
@@ -56,11 +60,25 @@ namespace CSCI473Assign2
             this.id = id;
             this.name = name;
             this.race = race;
+            this.pclass = 0;
+            this.role = 0;
             this.level = level;
             this.exp = exp;
             this.guildID = guildID;
             this.gear = gear;
             this.inventory = new List<uint>();
+        }
+
+        public Player(uint id, string name, Race race, Class pclass, Role role, uint level, uint exp, uint guildID )
+        {
+            this.id = id;
+            this.name = name;
+            this.race = race;
+            this.pclass = pclass;
+            this.role = role;
+            this.level = level;
+            this.exp = exp;
+            this.guildID = guildID;
         }
 
         //Get and Set Methods

@@ -46,6 +46,8 @@ namespace CSCI473Assign2
         [STAThread]
         static void Main()
         {
+            setup();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new WOCForm());
@@ -89,14 +91,12 @@ namespace CSCI473Assign2
 
                 UInt32.TryParse(values[0], out uint id);
                 Int32.TryParse(values[2], out int race);
-                UInt32.TryParse(values[3], out uint level);
-                UInt32.TryParse(values[4], out uint exp);
-                UInt32.TryParse(values[5], out uint guildID);
+                UInt32.TryParse(values[3], out uint pclass);
+                UInt32.TryParse(values[4], out uint level);
+                UInt32.TryParse(values[5], out uint exp);
+                UInt32.TryParse(values[6], out uint guildID);
 
-                for (int i = 0; i < 14; i++)
-                    UInt32.TryParse(values[6 + i], out gear[i]);
-
-                Players.Add(id, new Player(id, values[1], (Race)race, level, exp, guildID, gear));
+                Players.Add(id, new Player(id, values[1], (Race)race, (Class)pclass, (Role)0, level, exp, guildID));
                 invPlayers.Add(values[1], id);
                 curLine = inFile.ReadLine();
             }
