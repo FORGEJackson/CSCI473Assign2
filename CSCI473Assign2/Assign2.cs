@@ -15,6 +15,18 @@ namespace CSCI473Assign2
 
     public enum Race { Orc, Troll, Tauren, Forsaken };
 
+    public enum Class 
+    { 
+        Warrior, Mage, Druid, Priest, Warlock,
+        Rogue, Paladin, Hunter, Shaman
+    };
+
+    public enum Role { Tank, Healer, DPS };
+
+    public enum Servers { Beta4Azeroth, TKWasASetback, ZappyBoi };
+
+    public enum GuildType { Casual, Questing, Mythic, Raiding, PVP };
+
     static class Assign2
     {
         public static Dictionary<uint, Item> Items = new Dictionary<uint, Item>();
@@ -35,6 +47,11 @@ namespace CSCI473Assign2
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new WOCForm());
+        }
+
+        static void setup()
+        {
+
         }
     }
 }

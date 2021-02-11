@@ -20,7 +20,10 @@ namespace CSCI473Assign2
         private void WOCForm_Load(object sender, EventArgs e)
         {
             this.cbxRace.DataSource = Enum.GetValues(typeof(Race));
-            
+            this.cbxClass.DataSource = Enum.GetValues(typeof(Class));
+            this.cbxRole.DataSource = Enum.GetValues(typeof(Role));
+            this.cbxServer.DataSource = Enum.GetValues(typeof(Servers));
+            this.cbxType.DataSource = Enum.GetValues(typeof(GuildType));
         }
 
         private void btnPrintGuild_Click(object sender, EventArgs e)
