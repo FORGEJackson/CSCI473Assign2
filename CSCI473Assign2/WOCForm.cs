@@ -26,6 +26,11 @@ namespace CSCI473Assign2
             this.cbxServer.DataSource = Enum.GetValues(typeof(Servers));
             this.cbxType.DataSource = Enum.GetValues(typeof(GuildType));
 
+            UpdateLists();
+        }
+
+        private void UpdateLists()
+        {
             //Populate Players listbox
             List<Player> playerList = new List<Player>();
             foreach (KeyValuePair<uint, Player> cur in Assign2.Players)
@@ -81,7 +86,11 @@ namespace CSCI473Assign2
 
         private void btnAddPlayer_Click(object sender, EventArgs e)
         {
-
+            var rand = new Random();
+            uint id = (uint)rand.Next(0, 99999999);
+            Player newPlayer = new Player(id, txtPlayerName.Text, (Race)cbxRace.SelectedItem, (Class)cbxClass.SelectedItem, (Role)cbxRole.SelectedItem, 0, 0, 0);
+            Assign2.Players.Add(id, newPlayer);
+            UpdateLists();            
         }
 
         private void btnAddGuild_Click(object sender, EventArgs e)
@@ -132,6 +141,11 @@ namespace CSCI473Assign2
                     this.cbxRole.Items.Add((Role)2);
                     break;
             }
+        }
+
+        private void cbxRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnAddPlayer.Enabled = true;
         }
     }
 }

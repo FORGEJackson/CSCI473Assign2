@@ -205,6 +205,7 @@ namespace CSCI473Assign2
             this.cbxRole.Name = "cbxRole";
             this.cbxRole.Size = new System.Drawing.Size(121, 21);
             this.cbxRole.TabIndex = 8;
+            this.cbxRole.SelectedIndexChanged += new System.EventHandler(this.cbxRole_SelectedIndexChanged);
             // 
             // lblRole
             // 
@@ -235,6 +236,7 @@ namespace CSCI473Assign2
             // 
             // btnAddPlayer
             // 
+            this.btnAddPlayer.Enabled = false;
             this.btnAddPlayer.Location = new System.Drawing.Point(275, 36);
             this.btnAddPlayer.Name = "btnAddPlayer";
             this.btnAddPlayer.Size = new System.Drawing.Size(75, 20);
