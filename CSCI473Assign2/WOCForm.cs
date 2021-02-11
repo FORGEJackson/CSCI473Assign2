@@ -61,12 +61,24 @@ namespace CSCI473Assign2
 
         private void btnDisbandGuild_Click(object sender, EventArgs e)
         {
-
+            Guild curGuild = (Guild)lbxGuilds.SelectedItem;
+            foreach (KeyValuePair<uint, Player> cur in Assign2.Players)
+            {
+                if (cur.Value.GuildID == curGuild.Id)
+                    cur.Value.GuildID = '000000'; //Error message of "too many characters in character literal, so just make it '0'??
+            }
+            lbxGuilds.Items.Remove(curGuild);
         }
 
         private void btnJoinGuild_Click(object sender, EventArgs e)
         {
-
+            Player curPlayer = (Player)lbxPlayers.SelectedItem;
+            Guild curGuild = (Guild)lbxGuilds.SelectedItem;
+            if (lbxPlayers.SelectedIndex == -1 || lbxGuilds.SelectedIndex == -1)
+            {
+                //print error message in RichTextBox
+            }
+            //else add Player to selected Guild
         }
 
         private void btnLeaveGuild_Click(object sender, EventArgs e)
