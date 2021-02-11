@@ -45,7 +45,18 @@ namespace CSCI473Assign2
 
         private void btnPrintGuild_Click(object sender, EventArgs e)
         {
+            Guild curGuild = (Guild)lbxGuilds.SelectedItem;
+            string outputHeader = String.Format("Guild listing for {0}\r{1}\r\n", curGuild, String.Empty.PadRight(64, '-'));
+            txtOutput.AppendText(outputHeader);
+            foreach (KeyValuePair<uint, Player> cur in Assign2.Players)
+            {
+                if (cur.Value.GuildID == curGuild.Id)
+                {
+                    string playerOutput = String.Format("Name: {0} Race: {1} Level: {2} Guild {3}\r", cur.Value.Name.PadRight(16, ' '), cur.Value.Race.ToString().PadRight(12, ' '), cur.Value.Level.ToString().PadRight(12, ' '), Assign2.Guilds[cur.Value.GuildID].ToString());
+                    txtOutput.AppendText(playerOutput);
+                }
 
+            }
         }
 
         private void btnDisbandGuild_Click(object sender, EventArgs e)
