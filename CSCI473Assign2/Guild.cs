@@ -27,5 +27,9 @@ namespace CSCI473Assign2
             this.name = values[0];
             this.location = values[1];
         }
+        public uint Id { get => id; }
+        public string Name { get => name; }
+        public string Location { get => location; }
+
     }
 }
