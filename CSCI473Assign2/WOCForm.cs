@@ -107,7 +107,11 @@ namespace CSCI473Assign2
 
         private void btnAddGuild_Click(object sender, EventArgs e)
         {
-
+            var rand = new Random();
+            uint id = (uint)rand.Next(0, 999999);
+            Guild newGuild = new Guild(id, txtGuildName.Text, (Servers)cbxServer.SelectedItem, (GuildType)cbxType.SelectedItem);
+            Assign2.Guilds.Add(id, newGuild);
+            UpdateLists();
         }
 
         private void cbxClass_SelectedIndexChanged(object sender, EventArgs e)
