@@ -52,7 +52,7 @@ namespace CSCI473Assign2
             {
                 if (cur.Value.GuildID == curGuild.Id)
                 {
-                    string playerOutput = String.Format("Name: {0} Race: {1} Level: {2} Guild {3}\r", cur.Value.Name.PadRight(16, ' '), cur.Value.Race.ToString().PadRight(12, ' '), cur.Value.Level.ToString().PadRight(12, ' '), Assign2.Guilds[cur.Value.GuildID].ToString());
+                    string playerOutput = String.Format("Name: {0} Race: {1} Level: {2} Guild: {3}\r", cur.Value.Name.PadRight(16, ' '), cur.Value.Race.ToString().PadRight(8, ' '), cur.Value.Level.ToString().PadRight(8, ' '), Assign2.Guilds[cur.Value.GuildID].ToString());
                     txtOutput.AppendText(playerOutput);
                 }
 
