@@ -127,6 +127,7 @@ namespace CSCI473Assign2
             this.btnApplySearch.TabIndex = 4;
             this.btnApplySearch.Text = "Apply Search Criteria";
             this.btnApplySearch.UseVisualStyleBackColor = true;
+            this.btnApplySearch.Click += new System.EventHandler(this.btnApplySearch_Click);
             // 
             // btnLeaveGuild
             // 
@@ -136,6 +137,7 @@ namespace CSCI473Assign2
             this.btnLeaveGuild.TabIndex = 3;
             this.btnLeaveGuild.Text = "Leave Guild";
             this.btnLeaveGuild.UseVisualStyleBackColor = true;
+            this.btnLeaveGuild.Click += new System.EventHandler(this.btnLeaveGuild_Click);
             // 
             // btnJoinGuild
             // 
@@ -145,6 +147,7 @@ namespace CSCI473Assign2
             this.btnJoinGuild.TabIndex = 2;
             this.btnJoinGuild.Text = "Join Guild";
             this.btnJoinGuild.UseVisualStyleBackColor = true;
+            this.btnJoinGuild.Click += new System.EventHandler(this.btnJoinGuild_Click);
             // 
             // btnDisbandGuild
             // 
@@ -154,6 +157,7 @@ namespace CSCI473Assign2
             this.btnDisbandGuild.TabIndex = 1;
             this.btnDisbandGuild.Text = "Disband Guild";
             this.btnDisbandGuild.UseVisualStyleBackColor = true;
+            this.btnDisbandGuild.Click += new System.EventHandler(this.btnDisbandGuild_Click);
             // 
             // btnPrintGuild
             // 
@@ -163,6 +167,7 @@ namespace CSCI473Assign2
             this.btnPrintGuild.TabIndex = 0;
             this.btnPrintGuild.Text = "Print Guild Roster";
             this.btnPrintGuild.UseVisualStyleBackColor = true;
+            this.btnPrintGuild.Click += new System.EventHandler(this.btnPrintGuild_Click);
             // 
             // label1
             // 
@@ -173,7 +178,6 @@ namespace CSCI473Assign2
             this.label1.Size = new System.Drawing.Size(424, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "Player/Guild Management System";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // gbxCreatePlayer
             // 
@@ -235,6 +239,7 @@ namespace CSCI473Assign2
             this.btnAddPlayer.TabIndex = 4;
             this.btnAddPlayer.Text = "Add Player";
             this.btnAddPlayer.UseVisualStyleBackColor = true;
+            this.btnAddPlayer.Click += new System.EventHandler(this.btnAddPlayer_Click);
             // 
             // cbxRace
             // 
@@ -293,6 +298,7 @@ namespace CSCI473Assign2
             this.btnAddGuild.TabIndex = 6;
             this.btnAddGuild.Text = "Add Guild";
             this.btnAddGuild.UseVisualStyleBackColor = true;
+            this.btnAddGuild.Click += new System.EventHandler(this.btnAddGuild_Click);
             // 
             // cbxType
             // 
@@ -347,6 +353,7 @@ namespace CSCI473Assign2
             // txtPlayers
             // 
             this.txtPlayers.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.txtPlayers.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPlayers.Location = new System.Drawing.Point(394, 84);
             this.txtPlayers.Multiline = true;
             this.txtPlayers.Name = "txtPlayers";
@@ -367,6 +374,7 @@ namespace CSCI473Assign2
             // txtGuilds
             // 
             this.txtGuilds.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.txtGuilds.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGuilds.Location = new System.Drawing.Point(677, 84);
             this.txtGuilds.Multiline = true;
             this.txtGuilds.Name = "txtGuilds";
@@ -397,6 +405,7 @@ namespace CSCI473Assign2
             // txtOutput
             // 
             this.txtOutput.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.txtOutput.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOutput.Location = new System.Drawing.Point(12, 494);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
@@ -422,7 +431,7 @@ namespace CSCI473Assign2
             this.Controls.Add(this.gbxManagement);
             this.Name = "WOCForm";
             this.Text = "World of ConflictCraft: Player/Guild Management System";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.WOCForm_Load);
             this.gbxManagement.ResumeLayout(false);
             this.gbxManagement.PerformLayout();
             this.gbxCreatePlayer.ResumeLayout(false);

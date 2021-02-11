@@ -17,12 +17,43 @@ namespace CSCI473Assign2
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void WOCForm_Load(object sender, EventArgs e)
+        {
+            this.cbxRace.DataSource = Enum.GetValues(typeof(Race));
+            
+        }
+
+        private void btnPrintGuild_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnDisbandGuild_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnJoinGuild_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLeaveGuild_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnApplySearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddPlayer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddGuild_Click(object sender, EventArgs e)
         {
 
         }
