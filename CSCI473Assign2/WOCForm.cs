@@ -83,12 +83,18 @@ namespace CSCI473Assign2
             {
                 //print error message in RichTextBox
             }
-            //else add Player to selected Guild
+            else curPlayer.GuildID = curGuild.Id;
         }
 
         private void btnLeaveGuild_Click(object sender, EventArgs e)
         {
-
+            Player curPlayer = (Player)lbxPlayers.SelectedItem;
+            Guild curGuild = (Guild)lbxGuilds.SelectedItem;
+            if (lbxPlayers.SelectedIndex == -1 || lbxGuilds.SelectedIndex == -1)
+            {
+                //print error message in RichTextBox
+            }
+            else curPlayer.GuildID = '0';
         }
 
         private void btnApplySearch_Click(object sender, EventArgs e)
