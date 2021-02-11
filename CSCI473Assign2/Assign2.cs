@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Reflection;
 
 namespace CSCI473Assign2
 {
@@ -51,7 +53,69 @@ namespace CSCI473Assign2
 
         static void setup()
         {
+            //Load in all Items
+            string curLine;
 
+
+            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("CSCI473Assign2.equipment.txt");
+            StreamReader inFile = new StreamReader(stream);
+
+            curLine = inFile.ReadLine();
+            while (curLine != null)
+            {
+                string[] values = curLine.Split('\t');
+
+                UInt32.TryParse(values[0], out uint id);
+                Int32.TryParse(values[2], out int type);
+                UInt32.TryParse(values[3], out uint ilvl);
+                UInt32.TryParse(values[4], out uint primary);
+                UInt32.TryParse(values[5], out uint stamina);
+                UInt32.TryParse(values[6], out uint requirement);
+
+                Items.Add(id, new Item(id, values[1], (ItemType)type, ilvl, primary, stamina, requirement, values[7]));
+                invItems.Add(values[1], id);
+                curLine = inFile.ReadLine();
+            }
+
+            //Load in all Players
+            stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("CSCI473Assign2.players.txt");
+            inFile = new StreamReader(stream);
+
+            curLine = inFile.ReadLine();
+            while (curLine != null)
+            {
+                string[] values = curLine.Split('\t');
+                uint[] gear = new uint[14];
+
+                UInt32.TryParse(values[0], out uint id);
+                Int32.TryParse(values[2], out int race);
+                UInt32.TryParse(values[3], out uint level);
+                UInt32.TryParse(values[4], out uint exp);
+                UInt32.TryParse(values[5], out uint guildID);
+
+                for (int i = 0; i < 14; i++)
+                    UInt32.TryParse(values[6 + i], out gear[i]);
+
+                Players.Add(id, new Player(id, values[1], (Race)race, level, exp, guildID, gear));
+                invPlayers.Add(values[1], id);
+                curLine = inFile.ReadLine();
+            }
+
+            //Load in all guilds
+            stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("CSCI473Assign2.guilds.txt");
+            inFile = new StreamReader(stream);
+
+            curLine = inFile.ReadLine();
+            while (curLine != null)
+            {
+                string[] values = curLine.Split('\t');
+
+                UInt32.TryParse(values[0], out uint id);
+
+                Guilds.Add(id, values[1]);
+                invGuilds.Add(values[1], id);
+                curLine = inFile.ReadLine();
+            }
         }
     }
 }

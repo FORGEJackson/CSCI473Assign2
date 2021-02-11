@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Guild.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="WOCForm.cs">
       <SubType>Form</SubType>
