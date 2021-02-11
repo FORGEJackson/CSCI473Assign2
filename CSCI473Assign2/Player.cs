@@ -85,6 +85,8 @@ namespace CSCI473Assign2
         public uint Id { get => id; }
         public string Name { get => name; }
         public Race Race { get => race; }
+        public Class Pclass { get => pclass; }
+        public Role Role { get => role; }
         public uint Level 
         {
             get => level;
@@ -205,7 +207,7 @@ namespace CSCI473Assign2
         }
         public override string ToString()
         {
-            string returnString = Name + " |" + Race + " |" + Level + " |" + Assign2.Guilds[GuildID];
+            string returnString = String.Format("{0} {1} {2}\r\n", this.Name.PadRight(18, ' '), this.Pclass.ToString().PadRight(10, ' '), this.Level.ToString());
             return returnString;
         }
     }

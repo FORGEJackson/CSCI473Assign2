@@ -58,12 +58,12 @@ namespace CSCI473Assign2
             this.cbxServer = new System.Windows.Forms.ComboBox();
             this.txtGuildName = new System.Windows.Forms.TextBox();
             this.lblGuildName = new System.Windows.Forms.Label();
-            this.txtPlayers = new System.Windows.Forms.TextBox();
             this.lblPlayers = new System.Windows.Forms.Label();
-            this.txtGuilds = new System.Windows.Forms.TextBox();
             this.lblGuilds = new System.Windows.Forms.Label();
             this.lblOutput = new System.Windows.Forms.Label();
             this.txtOutput = new System.Windows.Forms.TextBox();
+            this.lbxPlayers = new System.Windows.Forms.ListBox();
+            this.lbxGuilds = new System.Windows.Forms.ListBox();
             this.gbxManagement.SuspendLayout();
             this.gbxCreatePlayer.SuspendLayout();
             this.gbxCreateGuild.SuspendLayout();
@@ -350,17 +350,6 @@ namespace CSCI473Assign2
             this.lblGuildName.TabIndex = 0;
             this.lblGuildName.Text = "Guild Name";
             // 
-            // txtPlayers
-            // 
-            this.txtPlayers.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.txtPlayers.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPlayers.Location = new System.Drawing.Point(394, 84);
-            this.txtPlayers.Multiline = true;
-            this.txtPlayers.Name = "txtPlayers";
-            this.txtPlayers.ReadOnly = true;
-            this.txtPlayers.Size = new System.Drawing.Size(242, 375);
-            this.txtPlayers.TabIndex = 4;
-            // 
             // lblPlayers
             // 
             this.lblPlayers.AutoSize = true;
@@ -370,17 +359,6 @@ namespace CSCI473Assign2
             this.lblPlayers.Size = new System.Drawing.Size(71, 24);
             this.lblPlayers.TabIndex = 5;
             this.lblPlayers.Text = "Players";
-            // 
-            // txtGuilds
-            // 
-            this.txtGuilds.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.txtGuilds.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGuilds.Location = new System.Drawing.Point(677, 84);
-            this.txtGuilds.Multiline = true;
-            this.txtGuilds.Name = "txtGuilds";
-            this.txtGuilds.ReadOnly = true;
-            this.txtGuilds.Size = new System.Drawing.Size(321, 375);
-            this.txtGuilds.TabIndex = 6;
             // 
             // lblGuilds
             // 
@@ -413,18 +391,36 @@ namespace CSCI473Assign2
             this.txtOutput.Size = new System.Drawing.Size(986, 142);
             this.txtOutput.TabIndex = 9;
             // 
+            // lbxPlayers
+            // 
+            this.lbxPlayers.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbxPlayers.FormattingEnabled = true;
+            this.lbxPlayers.ItemHeight = 14;
+            this.lbxPlayers.Location = new System.Drawing.Point(394, 84);
+            this.lbxPlayers.Name = "lbxPlayers";
+            this.lbxPlayers.Size = new System.Drawing.Size(263, 368);
+            this.lbxPlayers.TabIndex = 10;
+            // 
+            // lbxGuilds
+            // 
+            this.lbxGuilds.FormattingEnabled = true;
+            this.lbxGuilds.Location = new System.Drawing.Point(677, 84);
+            this.lbxGuilds.Name = "lbxGuilds";
+            this.lbxGuilds.Size = new System.Drawing.Size(306, 368);
+            this.lbxGuilds.TabIndex = 11;
+            // 
             // WOCForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1020, 648);
+            this.Controls.Add(this.lbxGuilds);
+            this.Controls.Add(this.lbxPlayers);
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.lblOutput);
             this.Controls.Add(this.lblGuilds);
-            this.Controls.Add(this.txtGuilds);
             this.Controls.Add(this.lblPlayers);
-            this.Controls.Add(this.txtPlayers);
             this.Controls.Add(this.gbxCreateGuild);
             this.Controls.Add(this.gbxCreatePlayer);
             this.Controls.Add(this.label1);
@@ -474,12 +470,12 @@ namespace CSCI473Assign2
         private System.Windows.Forms.ComboBox cbxServer;
         private System.Windows.Forms.TextBox txtGuildName;
         private System.Windows.Forms.Label lblGuildName;
-        private System.Windows.Forms.TextBox txtPlayers;
         private System.Windows.Forms.Label lblPlayers;
-        private System.Windows.Forms.TextBox txtGuilds;
         private System.Windows.Forms.Label lblGuilds;
         private System.Windows.Forms.Label lblOutput;
         private System.Windows.Forms.TextBox txtOutput;
+        private System.Windows.Forms.ListBox lbxPlayers;
+        private System.Windows.Forms.ListBox lbxGuilds;
     }
 }
 

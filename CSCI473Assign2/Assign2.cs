@@ -33,7 +33,7 @@ namespace CSCI473Assign2
     {
         public static Dictionary<uint, Item> Items = new Dictionary<uint, Item>();
         public static Dictionary<uint, Player> Players = new Dictionary<uint, Player>();
-        public static Dictionary<uint, string> Guilds = new Dictionary<uint, string>();
+        public static Dictionary<uint, Guild> Guilds = new Dictionary<uint, Guild>();
 
         //Inverse Dictionaries of the ones above for converting a name to an id
         static Dictionary<string, uint> invItems = new Dictionary<string, uint>();
@@ -112,7 +112,7 @@ namespace CSCI473Assign2
 
                 UInt32.TryParse(values[0], out uint id);
 
-                Guilds.Add(id, values[1]);
+                Guilds.Add(id, new Guild(id, values[1]));
                 invGuilds.Add(values[1], id);
                 curLine = inFile.ReadLine();
             }

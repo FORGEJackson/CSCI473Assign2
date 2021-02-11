@@ -31,5 +31,10 @@ namespace CSCI473Assign2
         public string Name { get => name; }
         public string Location { get => location; }
 
+        public override string ToString()
+        {
+            return this.Name;
+        }
+
     }
 }

@@ -19,11 +19,28 @@ namespace CSCI473Assign2
 
         private void WOCForm_Load(object sender, EventArgs e)
         {
+            //Populate Combo boxes
             this.cbxRace.DataSource = Enum.GetValues(typeof(Race));
             this.cbxClass.DataSource = Enum.GetValues(typeof(Class));
             this.cbxRole.DataSource = Enum.GetValues(typeof(Role));
             this.cbxServer.DataSource = Enum.GetValues(typeof(Servers));
             this.cbxType.DataSource = Enum.GetValues(typeof(GuildType));
+
+            //Populate Players listbox
+            List<Player> playerList = new List<Player>();
+            foreach (KeyValuePair<uint, Player> cur in Assign2.Players)
+            {
+                playerList.Add(cur.Value);
+            }
+            lbxPlayers.DataSource = playerList;
+
+            //Populate Guilds listbox
+            List<Guild> guildList = new List<Guild>();
+            foreach (KeyValuePair<uint, Guild> cur in Assign2.Guilds)
+            {
+                guildList.Add(cur.Value);
+            }
+            lbxGuilds.DataSource = guildList;
         }
 
         private void btnPrintGuild_Click(object sender, EventArgs e)
