@@ -51,6 +51,7 @@ namespace CSCI473Assign2
         private void btnPrintGuild_Click(object sender, EventArgs e)
         {
             Guild curGuild = (Guild)lbxGuilds.SelectedItem;
+            curGuild.ToString();
             string outputHeader = String.Format("Guild listing for {0}\r{1}\r\n", curGuild, String.Empty.PadRight(64, '-'));
             txtOutput.AppendText(outputHeader);
             foreach (KeyValuePair<uint, Player> cur in Assign2.Players)
@@ -67,6 +68,7 @@ namespace CSCI473Assign2
         private void btnDisbandGuild_Click(object sender, EventArgs e)
         {
             Guild curGuild = (Guild)lbxGuilds.SelectedItem;
+            curGuild.ToString();
             foreach (KeyValuePair<uint, Player> cur in Assign2.Players)
             {
                 if (cur.Value.GuildID == curGuild.Id)
@@ -78,7 +80,9 @@ namespace CSCI473Assign2
         private void btnJoinGuild_Click(object sender, EventArgs e)
         {
             Player curPlayer = (Player)lbxPlayers.SelectedItem;
+            curPlayer.ToString();
             Guild curGuild = (Guild)lbxGuilds.SelectedItem;
+            curGuild.ToString();
             if (lbxPlayers.SelectedIndex == -1 || lbxGuilds.SelectedIndex == -1)
             {
                 txtOutput.AppendText("You must select both a Player and a Guild.");
@@ -89,7 +93,9 @@ namespace CSCI473Assign2
         private void btnLeaveGuild_Click(object sender, EventArgs e)
         {
             Player curPlayer = (Player)lbxPlayers.SelectedItem;
+            curPlayer.ToString();
             Guild curGuild = (Guild)lbxGuilds.SelectedItem;
+            curGuild.ToString();
             if (lbxPlayers.SelectedIndex == -1 || lbxGuilds.SelectedIndex == -1)
             {
                 txtOutput.AppendText("You must select both a Player and a Guild.");
@@ -102,8 +108,8 @@ namespace CSCI473Assign2
             Dictionary<uint, Player> copy1 = new Dictionary<uint, Player>(Assign2.Players);
             Dictionary<uint, Guild> copy2 = new Dictionary<uint, Guild>(Assign2.Guilds);
             if(txtSearchPlayer.Text == "" && txtSearchGuild.Text == "")
-            { 
-                //do nothing
+            {
+                txtOutput.AppendText("No filter criteria was chosen.");
             }
             else if(txtSearchPlayer.Text != "")
             {
