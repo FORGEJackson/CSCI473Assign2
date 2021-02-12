@@ -41,6 +41,10 @@ namespace CSCI473Assign2
         bool usedLow2 = false;
 
         //Constructors
+        /*
+         * Player - Default constructor
+         * Sets everything to 0, "", or null
+        */
         public Player()
         {
             this.id = 0;
@@ -54,7 +58,10 @@ namespace CSCI473Assign2
             this.gear = null;
             this.inventory = null;
         }
-
+        /*
+         * Player - Constructor override
+         * Old constructor from Assignment 1, unused currently
+        */
         public Player(uint id, string name, Race race, uint level, uint exp, uint guildID, uint[] gear)
         {
             this.id = id;
@@ -69,6 +76,10 @@ namespace CSCI473Assign2
             this.inventory = new List<uint>();
         }
 
+        /*
+         * Player - Constructor override
+         * Allows manual input of all data members
+        */
         public Player(uint id, string name, Race race, Class pclass, Role role, uint level, uint exp, uint guildID )
         {
             this.id = id;
@@ -101,6 +112,12 @@ namespace CSCI473Assign2
         public uint GuildID { get => guildID; set => guildID = value; }
 
         //Equip and Unequip Methods
+        /*
+         * EquipGear
+         * Takes a new gear id and equips it in the proper slots
+         * 
+         * Arguments: uint newGearID - id for the new equipment
+        */
         public void EquipGear(uint newGearID)
         {
             if (Assign2.Items.ContainsKey(newGearID))   //Check that newGearID is a valid item
@@ -165,6 +182,12 @@ namespace CSCI473Assign2
             else
                 throw new ArgumentException("Not a valid piece of gear");
         }
+        /*
+         * UnequipGear
+         * Removes gear from the provided slot
+         * 
+         * Arguments: int gearSlot - Slot to be emptied
+        */
         public void UnequipGear(int gearSlot)
         {
             if (gear[gearSlot] != 0)
@@ -181,6 +204,12 @@ namespace CSCI473Assign2
                 throw new ArgumentException("You don't have any gear equipped here.");
         }
         //Method to implement IComparable
+        /*
+         * CompareTo
+         * Allows Player's to be compared by name
+         * 
+         * Arguments: object obj - other Player to be compared to
+        */
         public int CompareTo(object obj)
         {
             if (obj == null) throw new ArgumentNullException(); //Check for null values
@@ -193,6 +222,10 @@ namespace CSCI473Assign2
                 throw new ArgumentException("[Player]:CompareTo argument is not a Player");
         }
         //Printing methods
+        /*
+         * PrintGearList
+         * Prints a list of all the Player's gear to the console
+        */
         public void PrintGearList()
         {
             ToString();
@@ -205,6 +238,7 @@ namespace CSCI473Assign2
                     System.Console.WriteLine("This item slot is empty.");
             }
         }
+        //Override for ToString - Returns [NAME] [RACE] [LEVEL] with padding
         public override string ToString()
         {
             string returnString = String.Format("{0} {1} {2}\r\n", this.Name.PadRight(18, ' '), this.Pclass.ToString().PadRight(10, ' '), this.Level.ToString());
