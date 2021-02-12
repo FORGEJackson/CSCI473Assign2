@@ -1,7 +1,7 @@
 ﻿/*  Authors:    Joshua Jackson z1855047
  *              Connor Whitten z1819460
  *      
- *      CSCI 473 Assignment 1
+ *      CSCI 473 Assignment 2
  *      Constants.cs
  *      This file contains some constants used throughout the program
  */

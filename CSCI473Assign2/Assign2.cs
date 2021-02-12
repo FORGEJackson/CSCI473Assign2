@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*  Authors:    Joshua Jackson z1855047
+ *              Connor Whitten z1819460
+ *      
+ *      CSCI 473 Assignment 2
+ *      Assign2.cs
+ *      This file contains the main and setup methods for initial launch of the program
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

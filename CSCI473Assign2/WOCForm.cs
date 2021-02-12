@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*  Authors:    Joshua Jackson z1855047
+ *              Connor Whitten z1819460
+ *      
+ *      CSCI 473 Assignment 2
+ *      WOCForm.cs
+ *      This file contains the event handling for WOCForm
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

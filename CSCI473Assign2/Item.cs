@@ -1,7 +1,7 @@
 ﻿/*  Authors:    Joshua Jackson z1855047
  *              Connor Whitten z1819460
  *      
- *      CSCI 473 Assignment 1
+ *      CSCI 473 Assignment 2
  *      Item.cs
  *      This file contains the implementation of the Item class and its methods
  */
@@ -80,6 +80,12 @@ namespace CSCI473Assign2
         public string Flavor { get => flavor; set => flavor = value; }
 
         //Methods
+        /*
+         * CompareTo
+         * Allows Item's to be compared by name
+         * 
+         * Arguments: object obj - other Item to be compared to
+        */
         public int CompareTo(object obj)
         {
             if (obj == null) throw new ArgumentNullException(); //Check for null values
@@ -92,6 +98,7 @@ namespace CSCI473Assign2
                 throw new ArgumentException("[Item]:CompareTo argument is not an Item");
         }
 
+        //ToString override - Returns information about the item formatted for assignment 1
         public override string ToString()
         {
             string returnString = "(" + Type + ") " + Name + " |" + Ilvl + "| --" + Requirement + "--\n\t\"" + Flavor + "\"";
