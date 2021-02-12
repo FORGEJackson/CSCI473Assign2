@@ -70,7 +70,7 @@ namespace CSCI473Assign2
             foreach (KeyValuePair<uint, Player> cur in Assign2.Players)
             {
                 if (cur.Value.GuildID == curGuild.Id)
-                    cur.Value.GuildID = 0; //Error message of "too many characters in character literal, so just make it '0'??
+                    cur.Value.GuildID = 0;
             }
             lbxGuilds.Items.Remove(curGuild);
         }
@@ -81,7 +81,7 @@ namespace CSCI473Assign2
             Guild curGuild = (Guild)lbxGuilds.SelectedItem;
             if (lbxPlayers.SelectedIndex == -1 || lbxGuilds.SelectedIndex == -1)
             {
-                //print error message in RichTextBox
+                txtOutput.AppendText("You must select both a Player and a Guild.");
             }
             else curPlayer.GuildID = curGuild.Id;
         }
@@ -92,14 +92,44 @@ namespace CSCI473Assign2
             Guild curGuild = (Guild)lbxGuilds.SelectedItem;
             if (lbxPlayers.SelectedIndex == -1 || lbxGuilds.SelectedIndex == -1)
             {
-                //print error message in RichTextBox
+                txtOutput.AppendText("You must select both a Player and a Guild.");
             }
             else curPlayer.GuildID = '0';
         }
 
         private void btnApplySearch_Click(object sender, EventArgs e)
         {
-
+            Dictionary<uint, Player> copy1 = new Dictionary<uint, Player>(Assign2.Players);
+            Dictionary<uint, Guild> copy2 = new Dictionary<uint, Guild>(Assign2.Guilds);
+            if(txtSearchPlayer.Text == "" && txtSearchGuild.Text == "")
+            { 
+                //do nothing
+            }
+            else if(txtSearchPlayer.Text != "")
+            {
+                foreach (KeyValuePair<uint, Player> cur in Assign2.Players)
+                {
+                    if (!cur.Value.Name.StartsWith(txtSearchPlayer.Text))
+                            copy1.Remove(cur.Key);
+                }
+                int length1 = copy1.Count;
+                if(length1 == 0)
+                    txtOutput.AppendText("Nothing was a match for your Player filtering criteria.\r");
+                else lbxPlayers.DataSource = copy1;
+            }
+            else if(txtSearchGuild.Text != "")
+            {
+                Servers.TryParse(txtSearchGuild.Text, out Servers server);
+                foreach (KeyValuePair<uint, Guild> cur in Assign2.Guilds)
+                {
+                    if (cur.Value.Location != server)
+                        copy2.Remove(cur.Key);
+                }
+                int length2 = copy2.Count;
+                if (length2 == 0)
+                    txtOutput.AppendText("Nothing was a match for your Guild filtering criteria.\r");
+                else lbxGuilds.DataSource = copy2;
+            }
         }
 
         private void btnAddPlayer_Click(object sender, EventArgs e)
