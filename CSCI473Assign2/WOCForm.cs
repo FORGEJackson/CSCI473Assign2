@@ -205,5 +205,15 @@ namespace CSCI473Assign2
         {
             btnAddPlayer.Enabled = true;
         }
+
+        private void lbxPlayers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.txtOutput.AppendText(lbxPlayers.SelectedItem.ToString());
+        }
+
+        private void lbxGuilds_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.txtOutput.AppendText(lbxGuilds.SelectedItem.ToString());
+        }
     }
 }

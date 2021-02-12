@@ -404,6 +404,7 @@ namespace CSCI473Assign2
             this.lbxPlayers.Name = "lbxPlayers";
             this.lbxPlayers.Size = new System.Drawing.Size(263, 368);
             this.lbxPlayers.TabIndex = 10;
+            this.lbxPlayers.SelectedIndexChanged += new System.EventHandler(this.lbxPlayers_SelectedIndexChanged);
             // 
             // lbxGuilds
             // 
@@ -414,6 +415,7 @@ namespace CSCI473Assign2
             this.lbxGuilds.Name = "lbxGuilds";
             this.lbxGuilds.Size = new System.Drawing.Size(306, 368);
             this.lbxGuilds.TabIndex = 11;
+            this.lbxGuilds.SelectedIndexChanged += new System.EventHandler(this.lbxGuilds_SelectedIndexChanged);
             // 
             // WOCForm
             // 
