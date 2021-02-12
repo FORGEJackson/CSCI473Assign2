@@ -8,6 +8,7 @@ using System.Reflection;
 
 namespace CSCI473Assign2
 {
+    //Enumerations for use throughout the assignment
     public enum ItemType
     {
         Helmet, Neck, Shoulders, Back, Chest,
@@ -31,6 +32,7 @@ namespace CSCI473Assign2
 
     static class Assign2
     {
+        //Dictionaries containing all the given input data from files
         public static Dictionary<uint, Item> Items = new Dictionary<uint, Item>();
         public static Dictionary<uint, Player> Players = new Dictionary<uint, Player>();
         public static Dictionary<uint, Guild> Guilds = new Dictionary<uint, Guild>();
@@ -44,6 +46,10 @@ namespace CSCI473Assign2
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
+        /*
+         * Main
+         * Calls setup and launches the form
+        */
         static void Main()
         {
             setup();
@@ -53,6 +59,10 @@ namespace CSCI473Assign2
             Application.Run(new WOCForm());
         }
 
+        /*
+         * setup
+         * Loads in information from all the given input files and populates them into dictionaries
+        */
         static void setup()
         {
             //Load in all Items
