@@ -12,11 +12,21 @@ namespace CSCI473Assign2
 {
     public partial class WOCForm : Form
     {
+        /*
+         * WOCForm
+         * Initializes components
+        */
         public WOCForm()
         {
             InitializeComponent();
         }
 
+        /*
+         * WOCForm_Load
+         * Connects Data sources for the comboboxes and calls UpdateLists() to populate the lists
+         * 
+         * Arguments:   Default event handler arguments
+        */
         private void WOCForm_Load(object sender, EventArgs e)
         {
             //Populate Combo boxes
@@ -29,6 +39,10 @@ namespace CSCI473Assign2
             UpdateLists();
         }
 
+        /*
+         * UpdateLists
+         * Creates lists from the Dictionaries in Assign2.cs to act as a DataSource for lbxPlayers and lbxGuilds
+        */
         private void UpdateLists()
         {
             //Populate Players listbox
@@ -48,6 +62,12 @@ namespace CSCI473Assign2
             lbxGuilds.DataSource = guildList;
         }
 
+        /*
+         * btnPrintGuild_Click
+         * Prints a list of all members belonging to the Currently Selected Guild
+         * 
+         * Arguments:   Default event handler arguments
+        */
         private void btnPrintGuild_Click(object sender, EventArgs e)
         {
             Guild curGuild = (Guild)lbxGuilds.SelectedItem;
@@ -65,6 +85,12 @@ namespace CSCI473Assign2
             }
         }
 
+        /*
+         * btnDisbandGuild_Click
+         * Removes all Players from the selected Guild and then deletes it from Assign2.Guilds
+         * 
+         * Arguments:   Default event handler arguments
+        */
         private void btnDisbandGuild_Click(object sender, EventArgs e)
         {
             Guild curGuild = (Guild)lbxGuilds.SelectedItem;
@@ -74,9 +100,16 @@ namespace CSCI473Assign2
                 if (cur.Value.GuildID == curGuild.Id)
                     cur.Value.GuildID = 0;
             }
-            lbxGuilds.Items.Remove(curGuild);
+            Assign2.Guilds.Remove(curGuild.Id);
+            UpdateLists();
         }
 
+        /*
+         * btnJoinGuild_Click
+         * Sets the currently selected player's guildId to the currently selected guild
+         * 
+         * Arguments:   Default event handler arguments
+        */
         private void btnJoinGuild_Click(object sender, EventArgs e)
         {
             Player curPlayer = (Player)lbxPlayers.SelectedItem;
@@ -90,6 +123,12 @@ namespace CSCI473Assign2
             else curPlayer.GuildID = curGuild.Id;
         }
 
+        /*
+         * btnLeaveGuild_Click
+         * Sets the currently selected Player's guild id to 0
+         * 
+         * Arguments:   Default event handler arguments
+        */
         private void btnLeaveGuild_Click(object sender, EventArgs e)
         {
             Player curPlayer = (Player)lbxPlayers.SelectedItem;
@@ -103,6 +142,12 @@ namespace CSCI473Assign2
             else curPlayer.GuildID = '0';
         }
 
+        /*
+         * btnApplySearch_Click
+         * Applies search filters to their respective lists
+         * 
+         * Arguments:   Default event handler arguments
+        */
         private void btnApplySearch_Click(object sender, EventArgs e)
         {
             Dictionary<uint, Player> copy1 = new Dictionary<uint, Player>(Assign2.Players);
@@ -138,6 +183,12 @@ namespace CSCI473Assign2
             }
         }
 
+        /*
+         * btnAddPlayer_Click
+         * Creates a new Player from the parameters in the group box and adds them to Assign2.Players
+         * 
+         * Arguments:   Default event handler arguments
+        */
         private void btnAddPlayer_Click(object sender, EventArgs e)
         {
             var rand = new Random();
@@ -147,6 +198,12 @@ namespace CSCI473Assign2
             UpdateLists();            
         }
 
+        /*
+         * btnAddGuild_Click
+         * Creates a new Guild from the parameters in the group box and adds it to Assign2.Guilds
+         * 
+         * Arguments:   Default event handler arguments
+        */
         private void btnAddGuild_Click(object sender, EventArgs e)
         {
             var rand = new Random();
@@ -156,6 +213,12 @@ namespace CSCI473Assign2
             UpdateLists();
         }
 
+        /*
+         * cbxClass_SelectedIndexChanged
+         * Enables cbxRole and adds the available roles to the box
+         * 
+         * Arguments:   Default event handler arguments
+        */
         private void cbxClass_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbxRole.Enabled = true;
@@ -201,19 +264,37 @@ namespace CSCI473Assign2
             }
         }
 
+        /*
+         * cbxRole_SelectdIndexChanged
+         * Enables the AddPlayer button once all the options have been filled
+         * 
+         * Arguments:   Default event handler arguments
+        */
         private void cbxRole_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnAddPlayer.Enabled = true;
         }
 
+        /*
+         * lbxPlayers_SelectdIndexChanged
+         * Outputs the currently selectd Player's ToString method to txtOutput
+         * 
+         * Arguments:   Default event handler arguments
+        */
         private void lbxPlayers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.txtOutput.AppendText(lbxPlayers.SelectedItem.ToString());
+            this.txtOutput.AppendText(lbxPlayers.SelectedItem.ToString() + "\r");
         }
 
+        /*
+         * lbxGuilds_SelectdIndexChanged
+         * Outputs the currently selectd Guild's ToString method to txtOutput
+         * 
+         * Arguments:   Default event handler arguments
+        */
         private void lbxGuilds_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.txtOutput.AppendText(lbxGuilds.SelectedItem.ToString());
-        }
+            this.txtOutput.AppendText(lbxGuilds.SelectedItem.ToString() + "\r");
+        } 
     }
 }
